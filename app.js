@@ -76,15 +76,46 @@ function renderCart() {
 // B2 — Filter as you type
 // ---------------------------------------------------------------------------
 function applyFilter() {
-  // TODO B2:
-  // 1. Read searchInput.value, trim() it, toLowerCase() it.
-  // 2. For every .card: card.hidden = true unless its .name contains the query
-  //    (compare lower-case with lower-case).
-  // 3. Write ONE line into statusBox, with textContent — never innerHTML:
-  //      query is empty   -> ''  (nothing)
-  //      some cards match -> 'Showing 3 of 8 products'
-  //      nothing matches  -> 'No products match "<exactly what the user typed>"'
+  // Giữ nguyên nội dung người dùng nhập để dùng trong thông báo.
+  const rawQuery = searchInput.value;
+
+  // Chỉ chuẩn hóa bản dùng để tìm kiếm.
+  const query = rawQuery.trim().toLowerCase();
+
+  // Lấy lại card mỗi lần chạy, gồm cả sản phẩm vừa Load more.
+  const cards = catalogue.querySelectorAll('.card');
+
+  let visibleCount = 0;
+
+  for (const card of cards) {
+    const productName = card
+      .querySelector('.name')
+      .textContent
+      .toLowerCase();
+
+    const matches = productName.includes(query);
+
+    card.hidden = !matches;
+
+    if (matches) {
+      visibleCount += 1;
+    }
+  }
+
+  let message = '';
+
+  if (query !== '') {
+    if (visibleCount > 0) {
+      message = `Showing ${visibleCount} of ${cards.length} products`;
+    } else {
+      message = `No products match "${rawQuery}"`;
+    }
+  }
+
+  statusBox.textContent = message;
 }
+
+searchInput.addEventListener('input', applyFilter);
 
 // TODO B2: call applyFilter on every 'input' event of searchInput.
 

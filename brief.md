@@ -16,3 +16,6 @@ Hướng dẫn tôi hoàn thành bài lab, từng bước cụ thể, từ kĩ t
 Áp dụng các ràng buộc chung. Hãy đề xuất hướng hoàn thành TODO B1 trong app.js: đúng một click listener trên catalogue, xác định nút Add bằng closest, bỏ qua nút disabled và click ngoài Add, cập nhật cart theo data-id, render tổng số lượng bằng textContent. Giải thích cách xử lý số lượng chưa tồn tại và vì sao cách này hoạt động với Belt sau Load more. So sánh với listener riêng từng nút. Viết code thay thế ngay trong đoạn chat, không sửa file
 
 5.
+Áp dụng các ràng buộc chung. Hãy đề xuất hướng hoàn thành B2: lọc theo tên bằng chuỗi đã trim và chuyển chữ thường; giữ riêng nội dung gốc để thông báo không có kết quả nhắc lại chính xác. Lấy card hiện tại mỗi lần chạy để hỗ trợ Load more, dùng hidden, cập nhật duy nhất statusBox.textContent và nghe sự kiện input. Giải thích lựa chọn so với keyup, change, regex, innerHTML và danh sách card lưu từ lúc tải trang. Nêu kiểm tra trước/sau Load more và chuỗi thử trong hàng 8 của Done means. Viết code trong đoạn chat, không sửa file
+
+6.
