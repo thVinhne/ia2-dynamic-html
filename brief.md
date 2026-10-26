@@ -12,5 +12,7 @@ Hướng dẫn tôi hoàn thành bài lab, từng bước cụ thể, từ kĩ t
 3. 
 Áp dụng các ràng buộc chung của bài. Hãy phân tích index.html và đề xuất bảng chuyển từ phần tử hiện tại sang HTML ngữ nghĩa, bao gồm card trong template. Giữ mọi id, class và data attribute; giữ giao diện. Giải thích lựa chọn ul/li, h1/h2, form/label, button và disabled; so sánh với các cách khác. Nêu những div nên giữ lại. Đưa checklist đạt selfCheck 8/8 và kiểm tra bàn phím. viết code thay thế trong đoạn chat
 
+4. 
+Áp dụng các ràng buộc chung. Hãy đề xuất hướng hoàn thành TODO B1 trong app.js: đúng một click listener trên catalogue, xác định nút Add bằng closest, bỏ qua nút disabled và click ngoài Add, cập nhật cart theo data-id, render tổng số lượng bằng textContent. Giải thích cách xử lý số lượng chưa tồn tại và vì sao cách này hoạt động với Belt sau Load more. So sánh với listener riêng từng nút. Viết code thay thế ngay trong đoạn chat, không sửa file
 
-
+5.

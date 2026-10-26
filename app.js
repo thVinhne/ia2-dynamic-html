@@ -30,11 +30,40 @@ const cart = {};
 // Test: "Load more", then Add on a new product. If the count does not move,
 // your listener is on the old buttons, not on the list.
 
-// TODO B1: catalogue.addEventListener(...)
+catalogue.addEventListener('click', (event) => {
+  const addButton = event.target.closest('.add');
+
+  // Bỏ qua click ngoài Add hoặc nút không thuộc catalogue.
+  if (!addButton || !catalogue.contains(addButton)) {
+    return;
+  }
+
+  // Sản phẩm hết hàng không được thêm vào giỏ.
+  if (addButton.disabled) {
+    return;
+  }
+
+  const card = addButton.closest('.card');
+
+  if (!card || !catalogue.contains(card)) {
+    return;
+  }
+
+  const id = card.dataset.id;
+
+  cart[id] = (cart[id] ?? 0) + 1;
+
+  renderCart();
+});
 
 
 function renderCart() {
-  // TODO B1: write the number of items in the cart into cartCount.
+  const totalItems = Object.values(cart).reduce(
+  (sum, quantity) => sum + quantity,
+  0
+);
+
+  cartCount.textContent = String(totalItems);
   // Object.values(cart) gives [2, 1]; add them up. Use textContent.
 
   // Stretch B4: also write ' · 540.000 đ' into cartTotal.
