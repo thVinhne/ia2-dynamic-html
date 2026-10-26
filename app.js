@@ -145,6 +145,7 @@ searchInput.form.addEventListener('submit', (event) => {
   applyFilter();
 });
 
+renderCart();
 
 // ---------------------------------------------------------------------------
 // Given: "Load more". Read it, do not change it.

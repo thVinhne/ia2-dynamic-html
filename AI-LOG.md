@@ -31,15 +31,14 @@ Tool: Codex.
 Asked for: Hoàn thành B2 bằng cách lọc tên với chuỗi đã trim và chuyển chữ thường, giữ nguyên nội dung gốc cho thông báo không có kết quả, lấy lại card mỗi lần lọc, dùng hidden, textContent và sự kiện input; giải thích các lựa chọn, đưa code trong chat và hướng dẫn kiểm tra trước/sau Load more.
 Kept: Tách rawQuery để giữ nguyên nội dung nhập và query đã trim().toLowerCase() để so khớp. Gọi catalogue.querySelectorAll('.card') bên trong applyFilter() để lấy cả card mới. Đọc .name bằng textContent, chuyển sang chữ thường rồi kiểm tra bằng includes(). Gán card.hidden theo kết quả, đếm số card khớp và dùng cards.length làm tổng. Khi query rỗng, hiện lại tất cả card và để status trống; khi có kết quả, hiển thị "Showing n of total products"; khi không có kết quả, dùng rawQuery trong thông báo. Cập nhật bằng statusBox.textContent, không dùng innerHTML. Đăng ký searchInput.addEventListener('input', applyFilter). Giữ nguyên Load more và lời gọi applyFilter() có sẵn.
 Changed: Không có. Kết quả kiểm tra đã ghi nhận:
-- Hàng 8: nhập <img src=x onerror=alert(1)>, status hiển thị nguyên văn No products match "<img src=x onerror=alert(1)>". [Bổ sung quan sát thực tế về alert và ảnh lỗi.]
+Changed: Không có. Tôi đã chạy các kiểm tra sau:
+- Trước Load more: scarf và SCARF đều chỉ hiện Scarf, status là "Showing 1 of 8 products".
+- Nhập "  SCARF  ": vẫn chỉ hiện Scarf, status là "Showing 1 of 8 products".
+- Xóa nội dung hoặc nhập toàn khoảng trắng: hiện đủ 8 sản phẩm trước Load more, status trống.
+- Nhập belt trước Load more: không có kết quả. Giữ từ khóa rồi bấm Load more: Belt xuất hiện, status là "Showing 1 of 12 products".
+- Hàng 7 sau Load more: scarf và SCARF đều chỉ hiện Scarf, status là "Showing 1 of 12 products"; xóa nội dung thì hiện đủ 12 card và status trống.
+- Hàng 8: nhập <img src=x onerror=alert(1)>, không có alert hoặc ảnh lỗi; status hiển thị nguyên văn No products match "<img src=x onerror=alert(1)>".
 - Hàng 10 trong phạm vi B2: Console không có lỗi đỏ.
-
-Các ca kiểm tra sau chưa được điền kết quả thực tế:
-- Trước Load more, nhập scarf và SCARF: [kết quả thực tế; kỳ vọng chỉ hiện Scarf và "Showing 1 of 8 products"].
-- Nhập "  SCARF  ": [kết quả thực tế; kỳ vọng vẫn tìm thấy Scarf].
-- Xóa nội dung hoặc nhập toàn khoảng trắng: [kết quả thực tế; kỳ vọng hiện đủ 8 sản phẩm trước Load more và status trống].
-- Nhập belt trước Load more, giữ từ khóa rồi bấm Load more: [kết quả thực tế; kỳ vọng ban đầu không có kết quả, sau đó Belt xuất hiện với "Showing 1 of 12 products"].
-- Hàng 7 sau Load more, nhập scarf, SCARF rồi xóa: [kết quả thực tế; kỳ vọng mỗi từ khóa cho một kết quả với "Showing 1 of 12 products", xóa thì hiện đủ 12 card và status trống].
 Rejected: Không có. Tôi không loại bỏ đề xuất nào trong phương án B2.
 
 ## [2026-10-27] — B3: Ngăn form tìm kiếm tải lại trang
