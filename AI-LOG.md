@@ -264,3 +264,92 @@ Không có
 
 - Đạt hàng 10 trong phạm vi kiểm tra B3:
   Console không có lỗi đỏ.
+
+  ## B4 — Cart total
+
+### Tool
+
+- Codex.
+
+### Request
+
+- Yêu cầu mở rộng renderCart() để tính tổng tiền bằng
+  giá sản phẩm nhân số lượng trong giỏ.
+- Đọc giá từ data-price, chuyển chuỗi thành số bằng Number(),
+  định dạng vi-VN và ghi vào cartTotal bằng textContent.
+- Tổng phải tính cả sản phẩm đang bị ẩn khi tìm kiếm
+  và Belt được thêm sau Load more.
+- Yêu cầu so sánh với việc phân tích nội dung .price
+  hoặc tạo thêm bảng giá riêng.
+- Yêu cầu đưa code và các ca kiểm tra có phép tính cụ thể
+  ngay trong chat, không sửa file.
+
+### Accepted
+
+- Giữ phần tính tổng số lượng của B1 bằng Object.values(cart)
+  và reduce() với giá trị ban đầu 0.
+- Lấy lại toàn bộ card trong catalogue mỗi lần renderCart()
+  chạy, bao gồm card bị ẩn và card được thêm sau Load more.
+- Đọc mã sản phẩm từ card.dataset.id.
+- Lấy số lượng bằng cart[id] ?? 0.
+- Đọc giá từ card.dataset.price và chuyển thành số
+  bằng Number() trước khi tính toán.
+- Cộng giá nhân số lượng của từng sản phẩm vào tổng tiền.
+- Định dạng tổng bằng toLocaleString('vi-VN'),
+  thêm tiền tố " · " và đơn vị " đ".
+- Cập nhật cartTotal bằng textContent, giữ nguyên cấu trúc
+  link Cart và các span hiện có.
+- Tiếp tục dùng lời gọi renderCart() trong listener B1;
+  không thêm listener cho B4 hoặc sửa phần Load more.
+- Tôi tự áp dụng code Codex đưa trong chat vào app.js.
+
+### Changed
+
+- Không có. Tôi áp dụng phương án Codex cung cấp;
+  các ca kiểm tra B4 đều đạt nên không yêu cầu điều chỉnh.
+
+### Rejected
+
+- Không có. Tôi không loại bỏ đề xuất nào trong phương án
+  Codex cung cấp cho B4.
+
+### Verification
+
+- Giỏ rỗng:
+  giao diện hiển thị Cart (0) · 0 đ.
+
+- Thêm T-shirt ba lần:
+  180.000 × 3 = 540.000 đ.
+  Kết quả: Cart (3) · 540.000 đ.
+
+- Thêm T-shirt hai lần và Cap một lần:
+  180.000 × 2 + 95.000 = 455.000 đ.
+  Kết quả: Cart (3) · 455.000 đ.
+
+- Thêm Hoodie một lần và Socks hai lần:
+  420.000 + 75.000 × 2 = 570.000 đ.
+  Kết quả: Cart (3) · 570.000 đ.
+
+- Bấm Load more rồi thêm Belt một lần:
+  140.000 × 1 = 140.000 đ.
+  Kết quả: Cart (1) · 140.000 đ.
+
+- Sau Load more, thêm T-shirt hai lần và Belt một lần:
+  180.000 × 2 + 140.000 = 500.000 đ.
+  Kết quả: Cart (3) · 500.000 đ.
+
+- Thử Add của Tote bag khi giỏ rỗng:
+  số lượng và tổng tiền không tăng,
+  vẫn là Cart (0) · 0 đ.
+
+- Kiểm tra sản phẩm bị ẩn vẫn được tính:
+  thêm T-shirt hai lần và Cap một lần,
+  sau đó tìm scarf.
+  T-shirt và Cap bị ẩn nhưng giỏ vẫn là Cart (3) · 455.000 đ.
+  Tiếp tục Add Scarf để renderCart() chạy lại:
+  180.000 × 2 + 95.000 + 160.000 = 615.000 đ.
+  Kết quả: Cart (4) · 615.000 đ.
+  Xóa từ khóa: số lượng và tổng tiền giữ nguyên.
+
+- Đạt hàng 10 trong phạm vi kiểm tra B4:
+  Console không có lỗi đỏ.

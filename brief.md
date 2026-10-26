@@ -19,3 +19,7 @@ Hướng dẫn tôi hoàn thành bài lab, từng bước cụ thể, từ kĩ t
 Áp dụng các ràng buộc chung. Hãy đề xuất hướng hoàn thành B2: lọc theo tên bằng chuỗi đã trim và chuyển chữ thường; giữ riêng nội dung gốc để thông báo không có kết quả nhắc lại chính xác. Lấy card hiện tại mỗi lần chạy để hỗ trợ Load more, dùng hidden, cập nhật duy nhất statusBox.textContent và nghe sự kiện input. Giải thích lựa chọn so với keyup, change, regex, innerHTML và danh sách card lưu từ lúc tải trang. Nêu kiểm tra trước/sau Load more và chuỗi thử trong hàng 8 của Done means. Viết code trong đoạn chat, không sửa file
 
 6.
+Áp dụng các ràng buộc chung. Hãy đề xuất cách hoàn thành B3 bằng submit listener trên searchInput.form, gọi preventDefault rồi applyFilter. Giải thích vì sao cách này xử lý cả Enter và nút Search; so sánh với chỉ nghe click hoặc chặn keydown. Nêu cách kiểm tra URL không thêm ?q=cap, trang không reload và số lượng giỏ vẫn giữ nguyên. Chỉ đưa hướng giải trong chat, chưa viết code thay thế hoặc sửa file.
+
+7. 
+Áp dụng các ràng buộc chung. Hãy đề xuất cách mở rộng renderCart để tính tổng giá nhân số lượng từ data-price, chuyển chuỗi bằng Number, định dạng vi-VN và ghi vào cartTotal bằng textContent. Tổng phải tính cả sản phẩm bị ẩn khi lọc và Belt sau Load more. So sánh với phân tích chữ trong .price hoặc tạo thêm bảng giá riêng. Đưa các ca kiểm tra có phép tính cụ thể. Chưa viết code thay thế hoặc sửa file.
