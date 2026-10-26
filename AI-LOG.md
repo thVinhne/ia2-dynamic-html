@@ -207,3 +207,60 @@ Không có
 - Hàng 10 trong phạm vi kiểm tra B2:
   kiểm tra Console sau các thao tác.
   Kết quả: Không có lỗi đỏ
+
+  ## B3 — Prevent search form reload
+
+### Tool
+
+- Codex.
+
+### Request
+
+- Yêu cầu hoàn thành B3 bằng submit listener trên searchInput.form.
+- Gọi preventDefault() để ngăn gửi form mặc định, sau đó
+  gọi applyFilter().
+- Yêu cầu giải thích vì sao cách này xử lý cả Enter và
+  nút Search; so sánh với chỉ nghe click hoặc chặn keydown.
+- Yêu cầu hướng dẫn kiểm tra URL không thêm ?q=cap,
+  trang không reload và số lượng giỏ được giữ nguyên.
+- Yêu cầu đưa code trong chat, không sửa file.
+
+### Accepted
+
+- Dùng searchInput.form để lấy form chứa ô tìm kiếm.
+- Đăng ký một submit listener trên form.
+- Gọi event.preventDefault() trước applyFilter() để ngăn
+  trình duyệt thực hiện việc gửi form mặc định.
+- Gọi lại applyFilter() để cập nhật kết quả trên trang hiện tại.
+- Xử lý chung thao tác Enter trong ô tìm kiếm và bấm Search.
+- Tôi tự áp dụng code Codex đưa trong chat vào vị trí TODO B3
+  trong app.js.
+
+### Changed
+
+- Không có. Tôi áp dụng nguyên bản phương án Codex cung cấp;
+  các ca kiểm tra B3 đều đạt nên không yêu cầu điều chỉnh.
+
+### Rejected
+
+- Không có. Tôi không loại bỏ đề xuất nào trong phương án
+  Codex cung cấp cho B3.
+
+### Verification
+
+- Đạt hàng 9 trong bảng Done means:
+  thêm T-shirt hai lần để có Cart (2), nhập cap rồi nhấn Enter.
+  URL không thêm ?q=cap, trang không reload, giỏ vẫn Cart (2)
+  và kết quả lọc chỉ hiện Cap.
+
+- Kiểm tra bổ sung với nút Search:
+  đổi từ khóa thành scarf rồi bấm Search.
+  Kết quả lọc chuyển sang Scarf; URL và số lượng giỏ giữ nguyên.
+
+- Kiểm tra bổ sung việc reload:
+  đặt window.__b3ReloadProbe = 'before-submit' trong Console.
+  Sau khi nhấn Enter và bấm Search, đọc lại biến vẫn nhận
+  'before-submit', xác nhận trang không bị tải lại.
+
+- Đạt hàng 10 trong phạm vi kiểm tra B3:
+  Console không có lỗi đỏ.
