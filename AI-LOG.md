@@ -11,7 +11,11 @@ Rejected: Không áp dụng phần hướng dẫn chạy các lệnh Git trong t
 Tool: Codex.
 Asked for: Đề xuất cách chuyển index.html sang HTML ngữ nghĩa, bao gồm card trong template, giữ nguyên id, class, data attribute, dữ liệu và giao diện; không sửa style.css hoặc check.js; giải thích lựa chọn và đưa code trong chat để tôi tự áp dụng.
 Kept: Dùng header, nav, main và footer cho các vùng chính; một h1 cho Catalogue và h2 cho tên sản phẩm; ul cho danh sách và li cho từng card. Dùng form tìm kiếm, nối label với input bằng for="q"; Search là button type="submit", Add và Load more là button type="button". Thêm disabled cho Add của Tote bag, giữ class "button add disabled". Dùng p cho giá và tình trạng hàng; áp dụng li, h2, p và button tương ứng trong card-template. Dùng aria-label cho navigation và form tìm kiếm, role="search" cho form, role="status" cho vùng thông báo. Giữ div cho brand, vùng chứa Load more và status. Giữ nguyên id, class, data attribute và dữ liệu sản phẩm. Tôi tự áp dụng phương án Codex cung cấp.
-Changed: Không có. Tôi áp dụng nguyên bản phương án và không yêu cầu điều chỉnh. Đã chạy selfCheck() trong Console, nhận "Session 4 self-check: 8/8 passed", đạt hàng 1 của Done means.
+Changed: Không có. Tôi áp dụng nguyên bản phương án và không yêu cầu điều chỉnh.
+- Hàng 1: chạy selfCheck() trong Console, nhận "Session 4 self-check: 8/8 passed".
+- Hàng 2: đối chiếu minh chứng phần A/starter.png và minh chứng phần A/sau A.png; bố cục trong vùng chụp được giữ nguyên. Ảnh starter ghi self-check 0/8, ảnh sau A ghi 8/8.
+- Hàng 3: dùng Tab kiểm tra toàn bộ nội dung trang. Ô tìm kiếm, Search và cả bảy nút Add còn hàng nhận focus; Add của Tote bag bị bỏ qua. Phần tử đang focus có viền màu cam.
+- Kiểm tra bàn phím bổ sung: Enter trên Add của T-shirt tăng số lượng đúng một; Enter trên Search không tải lại trang ở bản đã hoàn thành B3.
 Rejected: Không có. Tôi không loại bỏ đề xuất nào trong phương án phần A.
 
 ## [2026-10-27] — B1: Thêm sản phẩm vào giỏ
@@ -31,7 +35,6 @@ Tool: Codex.
 Asked for: Hoàn thành B2 bằng cách lọc tên với chuỗi đã trim và chuyển chữ thường, giữ nguyên nội dung gốc cho thông báo không có kết quả, lấy lại card mỗi lần lọc, dùng hidden, textContent và sự kiện input; giải thích các lựa chọn, đưa code trong chat và hướng dẫn kiểm tra trước/sau Load more.
 Kept: Tách rawQuery để giữ nguyên nội dung nhập và query đã trim().toLowerCase() để so khớp. Gọi catalogue.querySelectorAll('.card') bên trong applyFilter() để lấy cả card mới. Đọc .name bằng textContent, chuyển sang chữ thường rồi kiểm tra bằng includes(). Gán card.hidden theo kết quả, đếm số card khớp và dùng cards.length làm tổng. Khi query rỗng, hiện lại tất cả card và để status trống; khi có kết quả, hiển thị "Showing n of total products"; khi không có kết quả, dùng rawQuery trong thông báo. Cập nhật bằng statusBox.textContent, không dùng innerHTML. Đăng ký searchInput.addEventListener('input', applyFilter). Giữ nguyên Load more và lời gọi applyFilter() có sẵn.
 Changed: Không có. Kết quả kiểm tra đã ghi nhận:
-Changed: Không có. Tôi đã chạy các kiểm tra sau:
 - Trước Load more: scarf và SCARF đều chỉ hiện Scarf, status là "Showing 1 of 8 products".
 - Nhập "  SCARF  ": vẫn chỉ hiện Scarf, status là "Showing 1 of 8 products".
 - Xóa nội dung hoặc nhập toàn khoảng trắng: hiện đủ 8 sản phẩm trước Load more, status trống.
@@ -56,7 +59,7 @@ Rejected: Không có. Tôi không loại bỏ đề xuất nào trong phương �
 Tool: Codex.
 Asked for: Mở rộng renderCart() để tính tổng giá nhân số lượng từ data-price, chuyển giá bằng Number(), định dạng vi-VN và cập nhật cartTotal bằng textContent, bao gồm sản phẩm bị ẩn và Belt sau Load more; so sánh với đọc .price hoặc tạo bảng giá riêng và đưa code cùng các ca kiểm tra trong chat.
 Kept: Giữ cách tính số lượng của B1 bằng Object.values(cart) và reduce() với giá trị ban đầu 0. Lấy toàn bộ card mỗi lần renderCart() chạy, gồm card bị ẩn và card thêm sau Load more. Đọc card.dataset.id, lấy số lượng bằng cart[id] ?? 0, chuyển card.dataset.price bằng Number() rồi cộng giá nhân số lượng. Định dạng bằng toLocaleString('vi-VN'), thêm tiền tố " · " và đơn vị " đ". Cập nhật cartTotal bằng textContent, giữ nguyên link Cart và các span. Tiếp tục dùng lời gọi renderCart() trong listener B1, không thêm listener cho B4 hoặc sửa Load more. Tôi tự áp dụng code vào app.js.
-Changed: Không có. Các ca kiểm tra B4 đều đạt nên tôi không yêu cầu điều chỉnh:
+Changed: Khi rà soát, phát hiện renderCart() chỉ được gọi sau khi Add thành công, nên tổng tiền chưa hiển thị ngay khi trang được tải. Tôi yêu cầu hướng dẫn sửa và tự bổ sung một lời gọi renderCart() sau phần xử lý B3, trước phần Load more được cung cấp.
 - Giỏ rỗng: Cart (0) · 0 đ.
 - Ba T-shirt: 180.000 × 3 = 540.000 đ; kết quả Cart (3) · 540.000 đ.
 - Hai T-shirt và một Cap: 180.000 × 2 + 95.000 = 455.000 đ; kết quả Cart (3) · 455.000 đ.

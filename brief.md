@@ -23,3 +23,6 @@ Hướng dẫn tôi hoàn thành bài lab, từng bước cụ thể, từ kĩ t
 
 7. 
 Áp dụng các ràng buộc chung. Hãy đề xuất cách mở rộng renderCart để tính tổng giá nhân số lượng từ data-price, chuyển chuỗi bằng Number, định dạng vi-VN và ghi vào cartTotal bằng textContent. Tổng phải tính cả sản phẩm bị ẩn khi lọc và Belt sau Load more. So sánh với phân tích chữ trong .price hoặc tạo thêm bảng giá riêng. Đưa các ca kiểm tra có phép tính cụ thể. Chưa viết code thay thế hoặc sửa file.
+
+8.
+Rà soát bản cuối của IA#2 theo toàn bộ bảng Done means trong README. Giữ nguyên mọi id, class, data attribute và dữ liệu sản phẩm. Trong mã nguồn, chỉ index.html và app.js được phép thay đổi; không sửa style.css, check.js hoặc README.md. Giữ nguyên phần Load more được cung cấp. B1 phải có đúng một click listener trên catalogue; dữ liệu người dùng phải được hiển thị bằng textContent; tìm kiếm phải hỗ trợ sản phẩm sau Load more; Enter và Search không reload trang. B4 phải tính đúng tổng tiền, kể cả sản phẩm đang bị ẩn, và hiển thị tổng tiền khi khởi tạo. Chỉ báo cáo phát hiện và hướng sửa trong chat, không tạo hoặc sửa file; phân biệt kiểm tra bằng đọc code với kiểm tra đã chạy trong trình duyệt.
